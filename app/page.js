@@ -1,7 +1,10 @@
+import Main from "@/components/Main";
+import Hero from "@/components/Hero";
+
 export default function HomePage() {
   return (
-    <main className="">
-      Main
-    </main>
+    <Main className="">
+      <Hero />
+    </Main>
   );
 }
