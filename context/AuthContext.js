@@ -17,9 +17,10 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [userDataObj, setUserDataObj] = useState({});
+  const [userDataObj, setUserDataObj] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // AUTH HANDLERS
   function signup(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
   }
@@ -29,7 +30,7 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
-    setUserDataObj({});
+    setUserDataObj(null);
     setCurrentUser(null);
     return signOut(auth);
   }
@@ -37,20 +38,19 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       try {
-        // set user to local context state
         setLoading(true);
         setCurrentUser(user);
         if (!user) {
+          console.log("No User Found");
           return;
         }
 
-        // if user exists, fetch data from firestore db
-        console.log("fetching user data");
+        console.log("Fetching User Data");
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
         let firebaseData = {};
         if (docSnap.exists()) {
-          console.log("found user data");
+          console.log("Found User Data");
           firebaseData = docSnap.data();
         }
         setUserDataObj(firebaseData);
@@ -60,11 +60,13 @@ export function AuthProvider({ children }) {
         setLoading(false);
       }
     });
+    return unsubscribe;
   }, []);
 
   const value = {
     currentUser,
     userDataObj,
+    setUserDataObj,
     signup,
     logout,
     login,

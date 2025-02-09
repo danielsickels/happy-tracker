@@ -2,13 +2,15 @@ import { Fugaz_One, Open_Sans } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import { AuthProvider } from "@/context/AuthContext";
+import Head from "./head";
+import Logout from "@/components/Logout";
 
 const opensans = Open_Sans({ subsets: ["latin"] });
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata = {
   title: "Happy Tracker",
-  description: "Track your mood daily!",
+  description: "See how you feel throughout the year, track your mood daily!",
 };
 
 export default function RootLayout({ children }) {
@@ -19,25 +21,32 @@ export default function RootLayout({ children }) {
           Happy Tracker
         </h1>
       </Link>
-      <div className="flex items-center justify-center">PLACEHOLDER</div>
+      <Logout />
     </header>
   );
 
   const footer = (
-    <footer className="p-4 sm:p-8 place-items-center">
-      <p
-        className={
-          "text-indigo-500 duration-200 hover:text-white hover:bg-indigo-500  " +
-          fugaz.className
-        }
+    <footer className="p-4 sm:p-8 grid place-items-center">
+      <Link
+        href={"https://github.com/danielsickels/happy-tracker"}
+        target="_blank"
+        className=""
       >
-        Created with love
-      </p>
+        <p
+          className={
+            "text-indigo-500 duration-200 hover:text-white hover:bg-indigo-500  " +
+            fugaz.className
+          }
+        >
+          Built with 💛
+        </p>
+      </Link>
     </footer>
   );
 
   return (
     <html lang="en">
+      <Head />
       <AuthProvider>
         <body
           className={
