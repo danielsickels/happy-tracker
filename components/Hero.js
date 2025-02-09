@@ -14,7 +14,7 @@ export default function Hero() {
           "text-5xl sm:text-6xl md:text-7xl text-center " + fugaz.className
         }
       >
-        <span className="textGradient">Broodl</span> helps you track your{" "}
+        <span className="textGradient">Happy Tracker</span> helps you track your{" "}
         <span className="textGradient">daily</span> mood!
       </h1>
       <p className="text-lg sm:text-xl md:text-2xl text-center w-full mx-auto max-w-[600px]">
