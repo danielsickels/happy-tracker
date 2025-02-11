@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: happy-tracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: happy-tracker
+  template:
+    metadata:
+      labels:
+        app: happy-tracker
+    spec:
+      containers:
+        - name: happy-tracker
+          image: localhost:5000/happy-tracker
+          ports:
+            - containerPort: 3000
