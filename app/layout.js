@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
       >
         <p
           className={
-            "text-indigo-500 duration-200 hover:text-white hover:bg-indigo-500  " +
+            "text-green-500 duration-200 hover:text-white hover:bg-green-500  " +
             fugaz.className
           }
         >

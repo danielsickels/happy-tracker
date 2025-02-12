@@ -78,7 +78,7 @@ export default function Calendar(props) {
           onClick={() => {
             handleIncrementMonth(-1);
           }}
-          className="mr-auto text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60"
+          className="mr-auto text-green-400 text-lg sm:text-xl duration-200 hover:opacity-60"
         >
           <i className="fa-solid fa-circle-chevron-left"></i>
         </button>
@@ -94,7 +94,7 @@ export default function Calendar(props) {
           onClick={() => {
             handleIncrementMonth(+1);
           }}
-          className="ml-auto text-indigo-400 text-lg sm:text-xl duration-200 hover:opacity-60"
+          className="ml-auto text-green-400 text-lg sm:text-xl duration-200 hover:opacity-60"
         >
           <i className="fa-solid fa-circle-chevron-right"></i>
         </button>
@@ -121,9 +121,9 @@ export default function Calendar(props) {
                 }
 
                 let color = demo
-                  ? gradients.indigo[baseRating[dayIndex]]
+                  ? gradients.green[baseRating[dayIndex]]
                   : dayIndex in data
-                  ? gradients.indigo[data[dayIndex]]
+                  ? gradients.green[data[dayIndex]]
                   : "white";
 
                 return (
@@ -131,8 +131,8 @@ export default function Calendar(props) {
                     style={{ background: color }}
                     className={
                       "text-xs sm:text-sm border border-solid p-2 flex items-center gap-2 justify-between rounded-lg " +
-                      (isToday ? " border-indigo-400" : " border-indigo-100") +
-                      (color === "white" ? " text-indigo-400" : " text-white")
+                      (isToday ? " border-green-400" : " border-green-100") +
+                      (color === "white" ? " text-green-400" : " text-white")
                     }
                     key={dayOfWeekIndex}
                   >

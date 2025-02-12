@@ -44,7 +44,7 @@ export default function Login() {
         onChange={(e) => {
           setEmail(e.target.value);
         }}
-        className="w-full max-w-[400px] mx-auto px-3 duration-200 hover:border-indigo-600 focus:border-indigo-600 py-2 sm:py-3 border border-solid border-indigo-400 rounded-full outline-none"
+        className="w-full max-w-[400px] mx-auto px-3 duration-200 hover:border-green-600 focus:border-green-600 py-2 sm:py-3 border border-solid border-green-400 rounded-full outline-none"
         placeholder="Email"
       />
       <input
@@ -52,7 +52,7 @@ export default function Login() {
         onChange={(e) => {
           setPassword(e.target.value);
         }}
-        className="w-full max-w-[400px] mx-auto px-3 duration-200 hover:border-indigo-600 focus:border-indigo-600 py-2 sm:py-3 border border-solid border-indigo-400 rounded-full outline-none"
+        className="w-full max-w-[400px] mx-auto px-3 duration-200 hover:border-green-600 focus:border-green-600 py-2 sm:py-3 border border-solid border-green-400 rounded-full outline-none"
         placeholder="Password"
         type="password"
       />
@@ -67,7 +67,7 @@ export default function Login() {
         {isRegister ? "Already have an account? " : "Don't have an account? "}
         <button
           onClick={() => setIsRegister(!isRegister)}
-          className="text-indigo-600"
+          className="text-green-600"
         >
           {isRegister ? "Sign in" : "Sign up"}
         </button>
