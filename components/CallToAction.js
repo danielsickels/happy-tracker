@@ -9,7 +9,7 @@ export default function CallToAction() {
 
   if (currentUser) {
     return (
-      <div className="max-w-[600px] mx-auto w-full">
+      <div className="mx-auto w-full max-w-[600px]">
         <Link href={"/dashboard"}>
           <Button dark full text="Go to dashboard" />
         </Link>
@@ -18,7 +18,7 @@ export default function CallToAction() {
   }
 
   return (
-    <div className="grid grid-cols-2 gap-4 w-fit mx-auto">
+    <div className="mx-auto grid w-fit grid-cols-2 gap-4">
       <Link href={"/dashboard"}>
         <Button text="Sign Up" />
       </Link>

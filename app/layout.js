@@ -15,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   const header = (
-    <header className="p-4 sm:p-8 flex items-center justify-between gap-4">
+    <header className="flex items-center justify-between gap-4 p-4 sm:p-8">
       <Link href={"/"}>
         <h1 className={"text-base sm:text-lg textGradient " + fugaz.className}>
           Happy Tracker
@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
   );
 
   const footer = (
-    <footer className="p-4 sm:p-8 grid place-items-center">
+    <footer className="grid place-items-center p-4 sm:p-8">
       <Link
         href={"https://github.com/danielsickels/happy-tracker"}
         target="_blank"

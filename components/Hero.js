@@ -8,7 +8,7 @@ const fugaz = Fugaz_One({ subsets: ["latin"], weight: ["400"] });
 
 export default function Hero() {
   return (
-    <div className="py-4 md:py-10 flex flex-col gap-8 sm:gap-10">
+    <div className="flex flex-col gap-8 py-4 sm:gap-10 md:py-10">
       <h1
         className={
           "text-5xl sm:text-6xl md:text-7xl text-center " + fugaz.className
@@ -17,7 +17,7 @@ export default function Hero() {
         <span className="textGradient">Happy Tracker</span> helps you track your{" "}
         <span className="textGradient">daily</span> mood!
       </h1>
-      <p className="text-lg sm:text-xl md:text-2xl text-center w-full mx-auto max-w-[600px]">
+      <p className="mx-auto w-full max-w-[600px] text-center text-lg sm:text-xl md:text-2xl">
         See how you feel throughout the year,
         <br />
         <span className="font-semibold">

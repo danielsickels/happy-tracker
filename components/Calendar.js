@@ -78,7 +78,7 @@ export default function Calendar(props) {
           onClick={() => {
             handleIncrementMonth(-1);
           }}
-          className="mr-auto text-green-400 text-lg sm:text-xl duration-200 hover:opacity-60"
+          className="mr-auto text-lg text-green-400 duration-200 hover:opacity-60 sm:text-xl"
         >
           <i className="fa-solid fa-circle-chevron-left"></i>
         </button>
@@ -94,12 +94,12 @@ export default function Calendar(props) {
           onClick={() => {
             handleIncrementMonth(+1);
           }}
-          className="ml-auto text-green-400 text-lg sm:text-xl duration-200 hover:opacity-60"
+          className="ml-auto text-lg text-green-400 duration-200 hover:opacity-60 sm:text-xl"
         >
           <i className="fa-solid fa-circle-chevron-right"></i>
         </button>
       </div>
-      <div className="flex flex-col overflow-hidden gap-1 py-4 sm:py-6 md:py-10">
+      <div className="flex flex-col gap-1 overflow-hidden py-4 sm:py-6 md:py-10">
         {[...Array(numRows).keys()].map((row, rowIndex) => {
           return (
             <div key={rowIndex} className="grid grid-cols-7 gap-1">

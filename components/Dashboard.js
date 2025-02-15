@@ -99,12 +99,12 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col flex-1 gap-8 sm:gap-12 md:gap-16">
-      <div className="grid grid-cols-3 bg-green-50 text-green-500 p-4 gap-4 rounded-lg">
+    <div className="flex flex-1 flex-col gap-8 sm:gap-12 md:gap-16">
+      <div className="grid grid-cols-3 gap-4 rounded-lg bg-green-50 p-4 text-green-500">
         {Object.keys(statuses).map((status, statusIndex) => {
           return (
             <div key={statusIndex} className=" flex flex-col gap-1 sm:gap-2">
-              <p className="font-medium capitalize text-xs sm:text-sm truncate">
+              <p className="truncate text-xs font-medium capitalize sm:text-sm">
                 {status.replaceAll("_", " ")}
               </p>
               <p className={"text-base sm:text-lg truncate " + fugaz.className}>
@@ -122,7 +122,7 @@ export default function Dashboard() {
       >
         How do you <span className="textGradient">feel</span> today?
       </h4>
-      <div className="flex items-stretch flex-wrap gap-4">
+      <div className="flex flex-wrap items-stretch gap-4">
         {Object.keys(moods).map((mood, moodIndex) => {
           return (
             <button
@@ -131,7 +131,7 @@ export default function Dashboard() {
                 handleSetMood(currentMoodValue);
               }}
               className={
-                "p-4 px-5 rounded-2xl purpleShadow duration-200 bg-green-50 hover:bg-green-100 text-center flex flex-col items-center gap-2 flex-1 "
+                "purpleShadow flex flex-1 flex-col items-center gap-2 rounded-2xl bg-green-50 p-4 px-5 text-center duration-200 hover:bg-green-100 "
               }
               key={moodIndex}
             >
