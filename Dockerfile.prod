@@ -1,38 +1,55 @@
 # Dockerfile.prod
 
-FROM node:20-alpine AS build
+# --- Build Stage ---
+    FROM node:20-alpine AS build
 
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install --production
-
-COPY . .
-
-ARG NEXT_PUBLIC_FIREBASE_API_KEY
-ARG NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-ARG NEXT_PUBLIC_FIREBASE_PROJECT_ID
-ARG NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-ARG NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-ARG NEXT_PUBLIC_FIREBASE_APP_ID
-
-ENV NEXT_PUBLIC_FIREBASE_API_KEY=$NEXT_PUBLIC_FIREBASE_API_KEY
-ENV NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=$NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-ENV NEXT_PUBLIC_FIREBASE_PROJECT_ID=$NEXT_PUBLIC_FIREBASE_PROJECT_ID
-ENV NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=$NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-ENV NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=$NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-ENV NEXT_PUBLIC_FIREBASE_APP_ID=$NEXT_PUBLIC_FIREBASE_APP_ID
-
-RUN npm run build
-
-# Production stage
-FROM node:20-alpine AS production
-
-WORKDIR /app
-
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/package*.json ./
-
-RUN npm install --production
-
-CMD ["npm", "start"]
+    WORKDIR /app
+    
+    # Install required build tools
+    RUN apk add --no-cache python3 make g++
+    
+    # Copy package files and install dependencies (with devDependencies)
+    COPY package*.json ./
+    RUN npm install --frozen-lockfile
+    
+    # Copy all source files
+    COPY . .
+    
+    # Accept Firebase-related build arguments
+    ARG NEXT_PUBLIC_FIREBASE_API_KEY
+    ARG NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    ARG NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    ARG NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    ARG NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    ARG NEXT_PUBLIC_FIREBASE_APP_ID
+    
+    # Expose these as environment variables during the build process
+    ENV NEXT_PUBLIC_FIREBASE_API_KEY=$NEXT_PUBLIC_FIREBASE_API_KEY
+    ENV NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=$NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    ENV NEXT_PUBLIC_FIREBASE_PROJECT_ID=$NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    ENV NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=$NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    ENV NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=$NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    ENV NEXT_PUBLIC_FIREBASE_APP_ID=$NEXT_PUBLIC_FIREBASE_APP_ID
+    
+    # Debug environment variables
+    RUN echo "API KEY: $NEXT_PUBLIC_FIREBASE_API_KEY"
+    
+    # Build the Next.js application
+    RUN npm run build
+    
+    # --- Production Stage ---
+    FROM node:20-alpine AS production
+    
+    WORKDIR /app
+    
+    # Copy only necessary build artifacts
+    COPY --from=build /app/.next ./.next
+    COPY --from=build /app/public ./public
+    COPY --from=build /app/package*.json ./
+    
+    # Install only production dependencies
+    RUN npm install --production
+    
+    # Run the Next.js app
+    CMD ["npm", "start"]
+    
