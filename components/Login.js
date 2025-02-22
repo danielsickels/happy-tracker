@@ -3,6 +3,7 @@ import { Fugaz_One } from "next/font/google";
 import React, { useState } from "react";
 import Button from "./Button";
 import { useAuth } from "@/context/AuthContext";
+
 const fugaz = Fugaz_One({ subsets: ["latin"], weight: ["400"] });
 
 export default function Login() {
@@ -10,13 +11,23 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [isRegister, setIsRegister] = useState(false);
   const [authenticating, setAuthenticating] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(""); 
 
   const { signup, login } = useAuth();
 
   async function handleSubmit() {
-    if (!email || !password || password.length < 6) {
+    setErrorMessage(""); 
+
+    if (!email || !password) {
+      setErrorMessage("Email and password are required.");
       return;
     }
+
+    if (isRegister && password.length < 6) {
+      setErrorMessage("Password must be at least 6 characters long.");
+      return;
+    }
+
     setAuthenticating(true);
     try {
       if (isRegister) {
@@ -28,6 +39,11 @@ export default function Login() {
       }
     } catch (err) {
       console.log(err.message);
+      if (!isRegister) {
+        setErrorMessage("Are you registered? Please check your credentials.");
+      } else {
+        setErrorMessage("Registration failed. Try again.");
+      }
     } finally {
       setAuthenticating(false);
     }
@@ -41,21 +57,20 @@ export default function Login() {
       <p>You&#39;re one step away!</p>
       <input
         value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
+        onChange={(e) => setEmail(e.target.value)}
         className="mx-auto w-full max-w-[400px] rounded-full border border-solid border-green-400 px-3 py-2 outline-none duration-200 hover:border-green-600 focus:border-green-600 sm:py-3"
         placeholder="Email"
       />
       <input
         value={password}
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
+        onChange={(e) => setPassword(e.target.value)}
         className="mx-auto w-full max-w-[400px] rounded-full border border-solid border-green-400 px-3 py-2 outline-none duration-200 hover:border-green-600 focus:border-green-600 sm:py-3"
         placeholder="Password"
         type="password"
       />
+
+      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+
       <div className="mx-auto w-full max-w-[400px]">
         <Button
           clickHandler={handleSubmit}
@@ -66,7 +81,10 @@ export default function Login() {
       <p className="text-center">
         {isRegister ? "Already have an account? " : "Don't have an account? "}
         <button
-          onClick={() => setIsRegister(!isRegister)}
+          onClick={() => {
+            setIsRegister(!isRegister);
+            setErrorMessage(""); 
+          }}
           className="text-green-600"
         >
           {isRegister ? "Sign in" : "Sign up"}
