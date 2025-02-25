@@ -1,4 +1,6 @@
-# Happy Tracker - The Mood Tracking App
+# Happy Tracker - The Mood Tracking App  
+  
+## Please visit https://happytracker.dannysickels.com/ for the live demo!
 
 ## Overview
 
