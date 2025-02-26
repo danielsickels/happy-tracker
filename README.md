@@ -9,7 +9,7 @@ _!
 
 ### Difficulties  
 
-One of my largest struggles was oddly not related to the reason for crafting it at all - it was working with firebase, its environment variables, and the use of helm charts (not a public repository) to connect this to the online web through Github Actions/physical server. Outside of that, I had a difficult time with math and setting up the days appropriately, found in "/components/Calander.js.
+One of my largest struggles was oddly not related to the reason for crafting it at all - it was working with firebase, its environment variables, and the use of helm charts (not a public repository) to connect this to the online web through Github Actions/physical server. Outside of that, I had a difficult time with math and setting up the days appropriately, found in "/components/Calander.js".
 
 ## Features
 
