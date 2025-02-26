@@ -4,14 +4,20 @@
 
 ## Overview
 
-**Happy Tracker** is a full-stack mood tracking web application built using **Next.js 14**, **Firebase**, and **TailwindCSS**.
+**Happy Tracker** is a full-stack mood tracking web application built using **Next.js 14**, **Firebase**, and **TailwindCSS**. The point of this project was to help develop my skills in the frontend development. I had founded a fairly strong backend sense through my other two projects, _[my bar management app](https://github.com/danielsickels/SmartBarLighting)_ and _[my personal portfolio](https://github.com/danielsickels/portfolio-website)_; however, I wanted to ensure my skills were well-rounded in the sense of a full stack developer. I present to you _Happy Tracker
+_!  
+
+### Difficulties  
+
+One of my largest struggles was oddly not related to the reason for crafting it at all - it was working with firebase, its environment variables, and the use of helm charts (not a public repository) to connect this to the online web through Github Actions/physical server. Outside of that, I had a difficult time with math and setting up the days appropriately, found in "/components/Calander.js.
 
 ## Features
 
 - User authentication via Firebase
 - Secure database storage for mood entries
 - Dynamic, responsive UI with TailwindCSS
-- Real-time updates and analytics
+- Real-time updates and analytics via Firebase
+- Data analytics to show the trends of your mood over time
 
 ---
 
