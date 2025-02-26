@@ -4,8 +4,7 @@
 
 ## Overview
 
-**Happy Tracker** is a full-stack mood tracking web application built using **Next.js 14**, **Firebase**, and **TailwindCSS**. The point of this project was to help develop my skills in the frontend development. I had founded a fairly strong backend sense through my other two projects, _[my bar management app](https://github.com/danielsickels/SmartBarLighting)_ and _[my personal portfolio](https://github.com/danielsickels/portfolio-website)_; however, I wanted to ensure my skills were well-rounded in the sense of a full stack developer. I present to you _Happy Tracker
-_!  
+**Happy Tracker** is a full-stack mood tracking web application built using **Next.js 14**, **Firebase**, and **TailwindCSS**. The point of this project was to help develop my skills in the frontend development. I had founded a fairly strong backend sense through my other two projects, _[my bar management app](https://github.com/danielsickels/SmartBarLighting)_ and _[my personal portfolio](https://github.com/danielsickels/portfolio-website)_; however, I wanted to ensure my skills were well-rounded in the sense of a full stack developer. I present to you _Happy Tracker_!  
 
 ### Difficulties  
 
