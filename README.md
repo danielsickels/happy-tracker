@@ -64,7 +64,9 @@ Ensure you have the following installed:
 
    The app should now be running on `http://localhost:3000`.
 
-4. **If you want to run with Docker:**
+---
+
+5. **If you want to run with Docker:**
 
    Containerize the app:
 
@@ -79,8 +81,10 @@ Ensure you have the following installed:
    ```
 
    Now visit `http://localhost:3000`
+  
+---
 
-5. **To Deploy to Kubernetes:**
+7. **To Deploy to Kubernetes:**
 
    1. Enable Kubernetes, and check to make sure it is runing in Docker Desktop:
       `kubectl get nodes`
